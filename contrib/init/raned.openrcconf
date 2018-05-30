@@ -1,0 +1,33 @@
+# /etc/conf.d/raned: config file for /etc/init.d/raned
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/ranecore/rane.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/raned"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/raned.pid"
+
+# Where to write raned data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/raned"
+
+# User and group to own raned process
+#BITCOIND_USER="ranecore"
+#BITCOIND_GROUP="ranecore"
+
+# Path to raned executable
+#BITCOIND_BIN="/usr/bin/raned"
+
+# Nice value to run raned under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for bitcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+BITCOIND_SIGTERM_TIMEOUT=60

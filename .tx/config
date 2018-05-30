@@ -1,0 +1,7 @@
+[main]
+host = https://www.transifex.com
+
+[rane.qt-translation-012x]
+file_filter = src/qt/locale/rane_<lang>.ts
+source_file = src/qt/locale/rane_en.ts
+source_lang = en

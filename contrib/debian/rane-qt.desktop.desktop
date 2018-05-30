@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Rane
+Comment=Rane P2P Cryptocurrency
+Exec=rane-qt %u
+Terminal=false
+Type=Application
+Icon=rane128
+MimeType=x-scheme-handler/rane;
+Categories=Office;Finance;
+Name[en_US]=rane-qt.desktop

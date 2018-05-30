@@ -1,0 +1,6 @@
+usr/local/bin/rane-qt usr/bin
+share/pixmaps/rane32.xpm usr/share/pixmaps
+share/pixmaps/rane16.xpm usr/share/pixmaps
+share/pixmaps/rane128.png usr/share/pixmaps
+debian/rane-qt.desktop usr/share/applications
+debian/rane-qt.protocol usr/share/kde4/services/

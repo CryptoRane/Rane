@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  raned The Rane Core server.
+#
+#
+# chkconfig: 345 80 20
+# description: raned
+# processname: raned
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/raned, see below
+if [ -f /etc/sysconfig/raned ]; then
+        . /etc/sysconfig/raned
+fi
+
+RETVAL=0
+
+prog=raned
+# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/raned
+lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/raned}
+
+# raned defaults to /usr/bin/raned, override with BITCOIND_BIN
+raned=${BITCOIND_BIN-/usr/bin/raned}
+
+# raned opts default to -disablewallet, override with BITCOIND_OPTS
+raned_opts=${BITCOIND_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $raned $raned_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
